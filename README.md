@@ -1,1 +1,1 @@
-# quizzer_celestial
+# quizzer_celestial. program to help students prepare for the upcoming exams
