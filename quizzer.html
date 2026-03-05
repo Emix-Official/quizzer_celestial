@@ -1,0 +1,135 @@
+<!--Program serving as a test for students examinations-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzer Celestial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="starfield">
+        <div class="stars1"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <div id="app-container" class="app-container">
+        <div id="landing-page" class="screen active">
+            <h1 class="main-title">Quizzer Celestial</h1>
+            <p class="intro-text">Embark on a journey of knowledge. Select your challenge below.</p>
+            
+            <div class="setup-section">
+                <h2 class="section-title">Choose Your Quiz</h2>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="quiz-choice" value="nigerian-culture" checked><span>Nigerian Culture</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="quiz-choice" value="jesus-messiah"><span>Jesus The Messiah</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="quiz-choice" value="combined"><span>The Combined Challenge</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setup-section">
+                <h2 class="section-title">Set a Time Limit</h2>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="timer-choice" value="0" checked><span>No Timer</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="timer-choice" value="15"><span>15 Minutes</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="timer-choice" value="30"><span>30 Minutes</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="timer-choice" value="60"><span>60 Minutes</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="setup-section">
+                <h2 class="section-title">Feedback Style</h2>
+                <div class="toggle-switch-container">
+                    <span class="mode-label">Grade at End</span>
+                    <label class="switch">
+                        <input type="checkbox" id="feedback-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="mode-label">Immediate</span>
+                </div>
+            </div>
+
+            <button id="start-quiz-btn" class="main-action-btn">Begin Your Ascent</button>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <div id="timer-display" class="timer-display"></div>
+                <div class="progress-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+            </div>
+            <div id="subject-tabs-container" class="subject-tabs-container">
+                <button id="culture-tab" class="subject-tab"></button>
+                <button id="theology-tab" class="subject-tab"></button>
+            </div>
+            <div class="question-area">
+                <h2 id="question-number"></h2>
+                <p id="question-text"></p>
+            </div>
+            <div id="options-container" class="options-grid"></div>
+            <div id="feedback" class="feedback-message"></div>
+            <div class="quiz-navigation">
+                <button id="prev-question-btn" class="nav-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    Previous
+                </button>
+                <button id="submit-quiz-btn" class="submit-btn-small">Submit</button>
+                <button id="next-question-btn" class="nav-btn">
+                    Next
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-screen" class="screen">
+            <h1 class="main-title">Performance Analysis</h1>
+            <div class="results-layout">
+                <div class="chart-container">
+                    <canvas id="results-chart"></canvas>
+                </div>
+                <div class="summary-container">
+                    <p id="score-display"></p>
+                    <p id="result-message"></p>
+                    <button id="retake-quiz-btn" class="main-action-btn">Attempt Anew</button>
+                </div>
+            </div>
+            <div id="answers-review"></div>
+        </div>
+    </div>
+
+    <div id="confirm-modal" class="modal-backdrop hidden">
+        <div class="modal-content">
+            <h2 class="modal-title">Finalize Quiz?</h2>
+            <p>Are you sure you wish to submit your answers? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="modal-btn cancel">Cancel</button>
+                <button id="modal-confirm-btn" class="modal-btn confirm">Confirm & Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
